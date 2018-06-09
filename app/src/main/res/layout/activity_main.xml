@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.meshsami27.myrecipes.MainActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-        android:src="@drawable/ic_launcher_foreground"
-        android:scaleType=""
-        />
+        android:src="@drawable/main2"
+        android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@id/appNameTextView"
+        android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MyRecipes"
@@ -27,15 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/locationTextView"
-        android:hint="Enter Category"
+        android:hint="Enter Your Category"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_above="@id/findCategoriesButton"
-        android:textColor="@color/colorTextIcons"/>
+        android:layout_above="@+id/findCategoriesButton">
+
+    </EditText>
 
     <Button
-        android:id="@id/findCategoriesButton"
-        style="@style/Widget.AppCompat.Button.Small"
+        android:id="@+id/findCategoriesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -47,5 +46,10 @@
         android:visibility="visible"
         tools:clickable="true"
         tools:cursorVisible="true" />
+
+
+
+
+
 
 </RelativeLayout>

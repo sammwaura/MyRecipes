@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -14,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.findCategoriesButton)
     Button mFindCategoriesButton;
-    @BindView(R.id.locationTextView) EditText mLocationTextView;
-    @BindView((R.id.appNameTextView)
-            TextView mAppNameTextView);
+    @BindView(R.id.locationTextView)
+    EditText mLocationTextView;
+    @BindView(R.id.appNameTextView)
+    TextView mAppNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +30,21 @@ public class MainActivity extends AppCompatActivity {
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
 
-        mFindCategoriesButton.setOnClickListener(this);
+        mFindCategoriesButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                if (v == mFindCategoriesButton) {
+                    String location = mLocationTextView.getText().toString();
+                    Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                    intent.putExtra("location", location);
+                    startActivity(intent);
+
+                }
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == mFindCategoriesButton) {
-            String location = mLocationEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
-            intent.putExtra("location", location);
-            startActivity(intent);
 
-        }
+}
