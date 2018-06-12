@@ -40,6 +40,9 @@
 
             </meta-data>
         </activity>
+        <service android:name=".MealDBActivity">
+
+        </service>
     </application>
 
 </manifest>

@@ -28,6 +28,7 @@ public class MealsActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String meals = ((TextView) view).getText().toString();
