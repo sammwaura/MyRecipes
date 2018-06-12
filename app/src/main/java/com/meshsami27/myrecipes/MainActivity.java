@@ -1,5 +1,6 @@
 package com.meshsami27.myrecipes;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,14 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.findCategoriesButton)
-    Button mFindCategoriesButton;
-    @BindView(R.id.locationTextView)
-    EditText mLocationTextView;
-    @BindView(R.id.appNameTextView)
-    TextView mAppNameTextView;
+    @BindView(R.id.findSearchButton)
+    Button mFindSearchButton;
+    @BindView(R.id.findCategoryButton)
+    TextView mFindCategoryButton;
+    @BindView(R.id.findMealsButton)
+    TextView mFindMealsButton;
+    @BindView(R.id.findIngredientsButton)
+    TextView mFindIngredientsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +30,58 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
-        mAppNameTextView.setTypeface(ostrichFont);
 
-        mFindCategoriesButton.setOnClickListener(new View.OnClickListener() {
+        mFindSearchButton.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View v) {
-                if (v == mFindCategoriesButton) {
-                    String location = mLocationTextView.getText().toString();
-                    Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
-                    intent.putExtra("location", location);
-                    startActivity(intent);
-
+                if (v == mFindSearchButton) {
+                    Intent intent = getIntent();
+                    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                        String query = intent.getStringExtra(SearchManager.QUERY);
+                        doMySearch(query);
+                    }
                 }
             }
         });
+
+        mFindCategoryButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (v == mFindCategoryButton) {
+                    Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mFindMealsButton.setOnClickListener(new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            if (v == mFindMealsButton) {
+                Intent intent = new Intent(MainActivity.this, MealsActivity.class);
+                startActivity(intent);
+            }
+        }
+        });
+
+        mFindIngredientsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (v == mFindIngredientsButton) {
+                    Intent intent = new Intent(MainActivity.this, IngredientsActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+    }
+
+    private void doMySearch(String query) {
     }
 
 
