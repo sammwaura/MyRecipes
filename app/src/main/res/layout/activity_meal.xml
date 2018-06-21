@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context="com.meshsami27.myrecipes.ui.MealListActivity"
+    android:background="@drawable/recipe" >
+
+
+    <android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recyclerView"/>
+
+
+    <TextView
+    android:id="@+id/locationTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:layout_marginTop="35dp"
+    android:text="Our Meals"
+    android:textColor="@color/colorTextIcons"
+    android:textSize="40sp"
+    android:textStyle="normal"
+    app:fontFamily="casual" />
+
+
+
+
+</LinearLayout>

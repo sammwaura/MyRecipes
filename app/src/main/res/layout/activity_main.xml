@@ -3,69 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.meshsami27.myrecipes.MainActivity">
+    tools:context="com.meshsami27.myrecipes.ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
         android:scaleType="centerCrop"
-        android:src="@drawable/main2" />
+        android:src="@drawable/main2"
+        android:layout_alignParentLeft="true" />
 
-    <SearchView
-        android:layout_width="330dp"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="25dp"
-        android:gravity="top|center"
-        android:orientation="vertical"
-        android:visibility="visible" />
+        android:id="@+id/categoryEditText"
+        android:background="@color/colorTextIcons"
+        android:layout_above="@+id/findCategoryButton"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:hint="Enter Category"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/findSearchButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorAccent"
-        android:contentDescription="activity_main"
-        android:text="Find Search"
-        android:textColor="@android:color/background_light"
-        android:visibility="visible"
-        tools:clickable="true"
-        tools:cursorVisible="true" />
 
     <Button
         android:id="@+id/findCategoryButton"
         android:layout_width="303dp"
         android:layout_height="69dp"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="168dp"
         android:background="@color/colorAccent"
         android:text="Find Category" />
-
-    <Button
-        android:id="@+id/findMealsButton"
-        android:layout_width="294dp"
-        android:layout_height="63dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="169dp"
-        android:background="@color/colorAccent"
-        android:text="Find Meals" />
-
-    <Button
-        android:id="@+id/findIngredientsButton"
-        android:layout_width="294dp"
-        android:layout_height="59dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp"
-        android:background="@color/colorAccent"
-        android:text="Find Ingredients" />
-
-
 
 
 </RelativeLayout>
