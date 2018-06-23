@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
-        android:text="Meal Name"
+        android:layout_marginTop="26dp"
+        tools:text="Meal Name"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -31,29 +31,299 @@
     <TextView
         android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="166dp"
-        android:text="Category Name"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="69dp"
+        tools:text="Category Name"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="34dp" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/instructionsTextView"
-        android:layout_width="123dp"
-        android:layout_height="32dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="194dp"
-        android:text=" instructions"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="63dp" />
+        <TextView
+            android:id="@+id/instructionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" instructions"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ingredients1TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients2TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients3TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients3"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients4TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients4"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients5TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients5"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients6TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients6"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients7TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients8TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients8"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients9TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients9"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients10TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients10"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients11TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients11"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients12TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients12"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients13TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients14TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients14"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients15TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients15"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients16TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients16"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients17TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients17"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients18TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients18"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients19TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients19"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <TextView
+            android:id="@+id/ingredients20TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="113dp"
+            tools:text=" ingredients20"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="63dp" />
+    </ScrollView>
 
 
 </RelativeLayout>

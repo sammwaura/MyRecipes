@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.meshsami27.myrecipes.R;
 import com.meshsami27.myrecipes.adapters.MyRecipesListAdapter;
@@ -15,7 +13,6 @@ import com.meshsami27.myrecipes.models.Recipe;
 import com.meshsami27.myrecipes.services.MealDBService;
 import com.squareup.picasso.Picasso;
 
-import org.parceler.Parcels;
 
 import java.io.IOException;
 
@@ -75,7 +72,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
                 mRecipe = mealDBService.processRecipeResults(response);
 
                 DetailRecipeActivity.this.runOnUiThread(() -> {
-                    mMealNameTextView.setText(mRecipe.getIdMeal());
+                    mMealNameTextView.setText(mRecipe.getStrMeal());
                     mCategoryTextView.setText(mRecipe.getStrCategory());
                     mInstrutionsTextView.setText(mRecipe.getStrInstructions());
                     Picasso.with(DetailRecipeActivity.this).load(mRecipe.getStrMealThumb()).into(mImageView);
