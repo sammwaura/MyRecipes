@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import android.content.SharedPreferences;
 import okhttp3.Call;
 import okhttp3.Callback;
 import java.io.IOException;
@@ -40,6 +41,9 @@ public class MealListActivity extends AppCompatActivity {
 
     Recipe mRecipe;
 
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String  mRecentCategory;
 
 
     @Override
@@ -56,6 +60,9 @@ public class MealListActivity extends AppCompatActivity {
 
         getMeals(category);
 
+        mSharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentCategory = mSharedPreferences.getString(com.meshsami27.myrecipes.Constants.PREFERENCES_CATEGORY_KEY, null);
+        android.util.Log.d("Shared Pref Category", mRecentCategory);
 
 
     }

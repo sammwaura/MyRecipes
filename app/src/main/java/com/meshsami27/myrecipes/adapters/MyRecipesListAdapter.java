@@ -87,7 +87,7 @@ public class MyRecipesListAdapter extends RecyclerView.Adapter<MyRecipesListAdap
             ButterKnife.bind(this, itemView);
 
             mContext = itemView.getContext();
-
+            itemView.setOnClickListener(this);
         }
 
         public void bindMeal(Meal meal){
@@ -101,11 +101,11 @@ public class MyRecipesListAdapter extends RecyclerView.Adapter<MyRecipesListAdap
         public void onClick(View v) {
                 int itemPosition = getLayoutPosition();
 
+                String id = mMeals.get(itemPosition).getIdMeal();
+
                 Intent intent = new Intent(mContext, DetailRecipeActivity.class);
 
-                intent.putExtra("position", itemPosition);
-
-                intent.putExtra("id", Parcels.wrap(mRecipes));
+                intent.putExtra("id", id);
 
                 mContext.startActivity(intent);
 

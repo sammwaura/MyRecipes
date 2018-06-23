@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.meshsami27.myrecipes.R;
 import com.meshsami27.myrecipes.adapters.MyRecipesListAdapter;
@@ -20,6 +21,7 @@ import java.io.IOException;
 
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -44,11 +46,13 @@ public class DetailRecipeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_detail_recipe);
 
+        ButterKnife.bind(this);
+
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id");
 
-        getRecipe("id");
+        getRecipe(id);
     }
 
 
@@ -61,7 +65,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
         mealDBService.filterMealRecipe(id, new Callback() {
 
             @Override
-
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
@@ -69,18 +72,13 @@ public class DetailRecipeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-                mRecipe = (Recipe) mealDBService.processRecipeResults(response);
+                mRecipe = mealDBService.processRecipeResults(response);
 
-                DetailRecipeActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        mMealNameTextView.setText(mRecipe.getStrMeal());
-                        mCategoryTextView.setText(mRecipe.getStrCategory());
-                        mInstrutionsTextView.setText(mRecipe.getStrInstructions());
-                        Picasso.with(DetailRecipeActivity.this).load(mRecipe.getStrMealThumb()).into(mImageView);
-
-                    }
+                DetailRecipeActivity.this.runOnUiThread(() -> {
+                    mMealNameTextView.setText(mRecipe.getIdMeal());
+                    mCategoryTextView.setText(mRecipe.getStrCategory());
+                    mInstrutionsTextView.setText(mRecipe.getStrInstructions());
+                    Picasso.with(DetailRecipeActivity.this).load(mRecipe.getStrMealThumb()).into(mImageView);
                 });
             }
         });

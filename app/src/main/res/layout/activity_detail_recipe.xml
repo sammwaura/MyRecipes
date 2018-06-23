@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,19 @@
     tools:context=".ui.DetailRecipeActivity">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/ic_launcher_background"
-        android:scaleType="centerCrop" />
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/detail" />
 
     <TextView
         android:id="@+id/mealNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="39dp"
         android:text="Meal Name"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
@@ -28,8 +31,9 @@
     <TextView
         android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/mealNameTextView"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="166dp"
         android:text="Category Name"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
@@ -42,6 +46,8 @@
         android:id="@+id/instructionsTextView"
         android:layout_width="123dp"
         android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="194dp"
         android:text=" instructions"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
@@ -50,4 +56,4 @@
         tools:layout_editor_absoluteY="63dp" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

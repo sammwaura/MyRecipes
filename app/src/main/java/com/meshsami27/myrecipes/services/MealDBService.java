@@ -100,8 +100,8 @@ public class MealDBService {
 
 
 
-    public List<Recipe> processRecipeResults(Response response) {
-        List<Recipe> recipes = new ArrayList<>();
+    public Recipe processRecipeResults(Response response) {
+        Recipe recipe = null;
 
         try {
             String jsonData = response.body().string();
@@ -110,13 +110,11 @@ public class MealDBService {
 
                 JSONObject mealdbJSON = new JSONObject(jsonData);
 
-                JSONArray recipeJSON = mealdbJSON.getJSONArray("recipes");
-
-                Type collectionType = new TypeToken<List<Recipe>>() {}.getType();
+                JSONObject recipeJSON = mealdbJSON.getJSONArray("meals").getJSONObject(0);
 
                 Gson gson= new GsonBuilder().create();
 
-                recipes = gson.fromJson(recipes.toString(), collectionType);
+                recipe = gson.fromJson(recipeJSON.toString(), Recipe.class);
 
             }
 
@@ -124,7 +122,7 @@ public class MealDBService {
             e.printStackTrace();
         }
 
-        return recipes;
+        return recipe;
     }
 }
 
