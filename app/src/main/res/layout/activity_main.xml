@@ -36,8 +36,24 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="184dp"
         android:layout_marginEnd="26dp"
+        android:layout_above="@+id/savedRestaurantsButton"
         android:background="@color/colorAccent"
-        android:text="Find Category" />
+        android:text="Find Category"
+        tools:ignore="UnknownId" />
+
+
+    <Button
+        android:id="@+id/savedCategoryMealButton"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="65dp"
+        android:background="@color/colorAccent"
+        android:text="saved meal category"
+        android:textColor="@color/colorTextIcons"
+        android:visibility="visible" />
 
 
 </RelativeLayout>

@@ -2,6 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
     defaultConfig {
         applicationId "com.meshsami27.myrecipes"
         minSdkVersion 15
@@ -9,17 +14,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        useLibrary 'org.apache.http.legacy'
+        vectorDrawables.useSupportLibrary = true
+    }
+
+
 
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
 
-        defaultConfig {
 
-            testInstrumentationRunner "android.support.test.runner.AndroidJunitRunner"
-        }
 
         packagingOptions {
             exclude 'META-INF/DEPENDENCIES.txt'
@@ -34,13 +39,6 @@ android {
             exclude 'META-INF/notice.txt'
         }
 
-        repositories {
-            mavenCentral()
-            jcenter()
-        }
-
-
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -48,20 +46,19 @@ android {
         }
     }
 
-
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
 }
+
+
+
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:support-v4:27.1.1'
-   implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
@@ -77,7 +74,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'org.parceler:parceler-api:1.1.10'
     annotationProcessor 'org.parceler:parceler:1.1.10'
-    implementation'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.firebaseui:firebase-ui-database:0.4.1'
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2') {
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -6,7 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.meshsami27.myrecipes.Constants;
 import com.meshsami27.myrecipes.R;
 import com.meshsami27.myrecipes.adapters.MyRecipesListAdapter;
 import com.meshsami27.myrecipes.models.Recipe;
@@ -31,7 +35,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
     @BindView(R.id.instructionsTextView)
     TextView mInstrutionsTextView;
     @BindView(R.id.imageView)
-   ImageView mImageView;
+    ImageView mImageView;
 //    @BindView(R.id.ingredient1TextView)
 //    TextView mIngredient1View;
 //    @BindView(R.id.ingredient2TextView)
@@ -90,9 +94,8 @@ public class DetailRecipeActivity extends AppCompatActivity {
         String id = intent.getStringExtra("id");
 
         getRecipe(id);
+
     }
-
-
 
     private void getRecipe(String id) {
 
@@ -136,7 +139,8 @@ public class DetailRecipeActivity extends AppCompatActivity {
 ////                    mIngredient19View.setText(mRecipe.getStrIngredient19());
 ////                    mIngredient20View.setText(mRecipe.getStrIngredient20());
                     Picasso.with(DetailRecipeActivity.this).load(mRecipe.getStrMealThumb()).into(mImageView);
-                });
+
+                    });
             }
         });
     }

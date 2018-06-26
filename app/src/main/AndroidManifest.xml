@@ -28,6 +28,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.meshsami27.myrecipes.ui.MainActivity" />
         </activity>
-         </application>
+        <activity android:name=".adapters.FirebaseCategoryMealViewHolder" />
+        <activity android:name=".ui.SavedCategoryMealListActivity"></activity>
+    </application>
 
 </manifest>

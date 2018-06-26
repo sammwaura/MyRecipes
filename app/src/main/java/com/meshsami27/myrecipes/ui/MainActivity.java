@@ -25,42 +25,44 @@ import com.meshsami27.myrecipes.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity  {
-//    private SharedPreferences mSharedPreferences;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    //    private SharedPreferences mSharedPreferences;
 //    private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedCategoryReference;
 
-      private ValueEventListener mSearchedCategoryReferenceListener;
+    private ValueEventListener mSearchedCategoryReferenceListener;
 
     @BindView(R.id.categoryEditText)
     EditText mCategoryEditText;
     @BindView(R.id.findCategoryButton)
     Button mFindCategoryButton;
+    @BindView(R.id.savedCategoryMealButton)
+    Button mSavedCategoryMealButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         mSearchedCategoryReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
-            mSearchedCategoryReferenceListener = mSearchedCategoryReference.addValueEventListener(new ValueEventListener() {
+        mSearchedCategoryReferenceListener = mSearchedCategoryReference.addValueEventListener(new ValueEventListener() {
+
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {//something changed!
-                for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()){
-                String category = categorySnapshot.getValue().toString();
-                Log.d("Category updated", "category:" + category);//log
+                for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
+                    String category = categorySnapshot.getValue().toString();
+                    Log.d("Category updated", "category:" + category);//log
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                 //update UI here if error occurred.
+                //update UI here if error occurred.
             }
         });
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -69,36 +71,45 @@ public class MainActivity extends AppCompatActivity  {
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mEditor = mSharedPreferences.edit();
 
-        mFindCategoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String category = mCategoryEditText.getText().toString();
+        mFindCategoryButton.setOnClickListener(this);
+        mSavedCategoryMealButton.setOnClickListener(this);
+    }
 
-                saveCategoryToFirebase(category);
+    @Override
+    public void onClick(View v) {
+        String category = mCategoryEditText.getText().toString();
+
+        saveCategoryToFirebase(category);
 //                 if(!(category).equals("")) {
 //                        addToSharedPreferences(category);
+        Intent intent = new Intent(MainActivity.this, MealListActivity.class);
+        intent.putExtra("category", category);
+        startActivity(intent);
 
-                Intent intent = new Intent(MainActivity.this, MealListActivity.class);
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
+        if (v == mSavedCategoryMealButton) {
+            Intent intent = new Intent(MainActivity.this, SavedCategoryMealListActivity.class);
+            startActivity(intent);
+        }
+    }
 
-            public void saveCategoryToFirebase(String Category) {
-                mSearchedCategoryReference.push().setValue(category);
-            }
+        public void saveCategoryToFirebase(String Category) {
+            mSearchedCategoryReference.push().setValue(category);
+        }
 
-            @Override
-            protected void onDestroy(){
-                super.onDestroy();
-                mSearchedCategoryReference.removeEventListener(mSearchedCategoryReferenceListener);
-            }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedCategoryReference.removeEventListener(mSearchedCategoryReferenceListener);
+    }
+
+
+
 
 //            private void addToSharedPreferences(String category) {
 //                mEditor.putString(Constants.PREFERENCES_CATEGORY_KEY, category).apply();
 
 //            }
-        });
 
 
-    }
 }
+
