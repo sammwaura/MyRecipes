@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "981865810654",
+    "firebase_url": "https://myrecipes-feb60.firebaseio.com",
+    "project_id": "myrecipes-feb60",
+    "storage_bucket": "myrecipes-feb60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981865810654:android:756ca0d28c0e8a73",
+        "android_client_info": {
+          "package_name": "com.meshsami27.myrecipes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981865810654-6upt8kkgccbc1b44hajc72ufbt2jhrr5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meshsami27.myrecipes",
+            "certificate_hash": "f0b7e7a0774db05e92338443f3c862bbf26aedfc"
+          }
+        },
+        {
+          "client_id": "981865810654-ejqjgd657ua56r2pc8aibbkhv769srns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnp72wnJNg10lh8m8_RlcIFGmliuHi5Rk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981865810654-ejqjgd657ua56r2pc8aibbkhv769srns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

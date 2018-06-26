@@ -30,7 +30,6 @@ import butterknife.ButterKnife;
 
 public class MealListActivity extends AppCompatActivity {
 
-    public static final String TAG = MealListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -41,9 +40,9 @@ public class MealListActivity extends AppCompatActivity {
 
     Recipe mRecipe;
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
-    private String  mRecentCategory;
+//   private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+//    private String  mRecentCategory;
 
 
     @Override
@@ -60,12 +59,12 @@ public class MealListActivity extends AppCompatActivity {
 
         getMeals(category);
 
-        mSharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentCategory = mSharedPreferences.getString(com.meshsami27.myrecipes.Constants.PREFERENCES_CATEGORY_KEY, null);
-        android.util.Log.d("Shared Pref Category", mRecentCategory);
-
-
-    }
+//        mSharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentCategory = mSharedPreferences.getString(com.meshsami27.myrecipes.Constants.PREFERENCES_CATEGORY_KEY, null);
+//        if(mRecentCategory !=null) {
+//            getMeals(mRecentCategory);
+        }
+//    }
 
     private void getMeals(String meals) {
 
