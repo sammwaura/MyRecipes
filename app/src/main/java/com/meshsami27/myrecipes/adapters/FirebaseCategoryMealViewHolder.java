@@ -5,12 +5,21 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.meshsami27.myrecipes.models.Meal;
+
 import com.meshsami27.myrecipes.Constants;
 import com.meshsami27.myrecipes.R;
+import com.meshsami27.myrecipes.ui.MainActivity;
 import com.meshsami27.myrecipes.ui.MealListActivity;
 import com.squareup.picasso.Picasso;
 
@@ -20,14 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FirebaseCategoryMealViewHolder extends AppCompatActivity implements onClickViewListener {
+public class FirebaseCategoryMealViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     View mView;
     Context mContext;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firebase_recipe_view_holder);
-    }
+
 
     public FirebaseCategoryMealViewHolder(View itemView){
         super(itemView);
@@ -51,14 +56,14 @@ public class FirebaseCategoryMealViewHolder extends AppCompatActivity implements
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    categories.add(snapshot.getValue(MealListActivity.class));
+                    meals.add(snapshot.getValue(Meal.class));
                 }
 
                 int itemPosition = getLayoutPosition();
 
                 Intent intent = new Intent(mContext, MealListActivity.class);
-                intent.putExtra("category", itemPosition + "");
-                intent.putExtra("category", Parcels.wrap(categories));
+                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("meal", Parcels.wrap(meals));
 
                 mContext.startActivity(intent);
             }

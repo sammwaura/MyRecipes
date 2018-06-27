@@ -73,7 +73,7 @@ public class MyRecipesListAdapter extends RecyclerView.Adapter<MyRecipesListAdap
 
     public class MyRecipesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.mCategory)
+        @BindView(R.id.mealImageView)
         ImageView mMealImageView;
 
         @BindView(R.id.mealNameTextView)

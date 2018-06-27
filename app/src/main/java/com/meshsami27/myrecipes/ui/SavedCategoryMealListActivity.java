@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -25,8 +24,7 @@ public class SavedCategoryMealListActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_meal);
@@ -35,9 +33,10 @@ public class SavedCategoryMealListActivity extends AppCompatActivity {
         mMealCategoryReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORIES);
         setUpFirebaseAdapter();
     }
+
     private void setUpFirebaseAdapter(){
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Meal, FirebaseCategoryMealViewHolder>
-                (MealListActivity.class, R.layout.meal_list_item, FirebaseCategoryMealViewHolder.class, mMealCategoryReference) {
+                (Meal.class, R.layout.meal_list_item, FirebaseCategoryMealViewHolder.class, mMealCategoryReference) {
 
             @Override
             protected void populateViewHolder(FirebaseCategoryMealViewHolder viewHolder,

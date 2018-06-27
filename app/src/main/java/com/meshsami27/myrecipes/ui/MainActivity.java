@@ -77,15 +77,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        String category = mCategoryEditText.getText().toString();
+        if (v == mFindCategoryButton) {
+            String category = mCategoryEditText.getText().toString();
 
-        saveCategoryToFirebase(category);
-//                 if(!(category).equals("")) {
-//                        addToSharedPreferences(category);
-        Intent intent = new Intent(MainActivity.this, MealListActivity.class);
-        intent.putExtra("category", category);
-        startActivity(intent);
+            saveCategoryToFirebase(category);
 
+            Intent intent = new Intent(MainActivity.this, MealListActivity.class);
+            intent.putExtra("category", category);
+            startActivity(intent);
+        }
         if (v == mSavedCategoryMealButton) {
             Intent intent = new Intent(MainActivity.this, SavedCategoryMealListActivity.class);
             startActivity(intent);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
         public void saveCategoryToFirebase(String Category) {
-            mSearchedCategoryReference.push().setValue(category);
+            mSearchedCategoryReference.push().setValue(Category);
         }
 
     @Override
