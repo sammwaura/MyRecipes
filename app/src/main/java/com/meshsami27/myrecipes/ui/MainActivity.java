@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.meshsami27.myrecipes.Constants;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.solver.widgets.ConstraintAnchor;
 import android.support.v7.app.AppCompatActivity;
 
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.savedCategoryMealButton)
     Button mSavedCategoryMealButton;
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mFindCategoryButton.setOnClickListener(this);
         mSavedCategoryMealButton.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                display welcome message
+                if (user != null) {
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                } else  {
+
+                }
+            }
+        };
+
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
