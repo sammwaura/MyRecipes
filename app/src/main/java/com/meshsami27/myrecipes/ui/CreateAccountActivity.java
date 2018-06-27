@@ -1,5 +1,6 @@
 package com.meshsami27.myrecipes.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     TextView mLoginTextView;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
         createAuthStateListener();
+        createAuthProgressDialog();
     }
 
     @Override
@@ -78,6 +82,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             createNewUser();
         }
     }
+    private void createAuthProgressDialog(){
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading....   ");
+        mAuthProgressDialog.setMessage("Authenticating wth Firebase...");
+        mAuthProgressDialog.setCancelable(false);
+    }
+
 
     public void createNewUser(){
         final String name = mNameEditText.getText().toString().trim();
@@ -90,6 +101,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
 
+        mAuthProgressDialog.show();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -101,6 +114,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                mAuthProgressDialog.dismiss();
+
                 if (task.isSuccessful()) {
                     Log.d(TAG, "Authentication succcessful");
                 } else {
@@ -126,7 +142,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
     private boolean isValidEmail(String email){
         boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-        if (!GoodEmail){
+        if (!isGoodEmail){
             mEmailEditText.setError("Please enter a valid email address");
             return false;
         }
