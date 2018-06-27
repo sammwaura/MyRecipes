@@ -39,7 +39,9 @@
         android:layout_above="@+id/savedRestaurantsButton"
         android:background="@color/colorAccent"
         android:text="Find Category"
-        tools:ignore="UnknownId" />
+        tools:ignore="UnknownId"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="26dp" />
 
 
     <Button

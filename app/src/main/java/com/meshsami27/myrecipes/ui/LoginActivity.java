@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+
 import com.meshsami27.myrecipes.R;
 
 import butterknife.BindView;
