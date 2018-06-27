@@ -26,6 +26,7 @@ import android.widget.EditText;
 import com.meshsami27.myrecipes.R;
 
 
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private Locale user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

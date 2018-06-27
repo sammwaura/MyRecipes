@@ -102,7 +102,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
-        boolean validName = isValidName(name);
         if (!validEmail || !validName || !validPassword) return;
 
         mAuthProgressDialog.show();
