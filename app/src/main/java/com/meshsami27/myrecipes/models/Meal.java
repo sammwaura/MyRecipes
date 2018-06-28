@@ -15,6 +15,7 @@ public class Meal {
     @SerializedName("idMeal")
     @Expose
     private String idMeal;
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -60,4 +61,11 @@ public class Meal {
         this.idMeal = idMeal;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }
