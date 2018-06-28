@@ -1,5 +1,6 @@
 package com.meshsami27.myrecipes.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +47,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+
         mPasswordLoginButton.setOnClickListener(this);
         mRegisterTextView.setOnClickListener(this);
+
         mAuth = FirebaseAuth.getInstance();
+        createAuthProgressDialog();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -59,41 +68,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         };
-    }
-
-    @Override
-    public void onClick(View view){
-        if (view == mRegisterTextView){
-            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        if (view == mPasswordLoginButton){
-            loginWithPassword();
-        }
-    }
-
-    private void loginWithPassword(){
-        String email = mEmailEditText.getText().toString().trim();
-        String password = mPasswordLoginButton.getText().toString().trim();
-        if (email.equals("")){
-            mEmailEditText.setError("Please enter your email");
-            return;
-        }
-        if (password.equals("")){
-            mPasswordEditText.setError("Password cannot be blank");
-            return;
-        }
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                if (!task.isSuccessful()){
-                    Log.w(TAG, "signInWithEmail", task.getException());
-                    Toast.makeText(LoginActivity.this, "Authentication failed,", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     @Override
@@ -109,4 +83,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+
+    private void loginWithPassword(){
+        String email = mEmailEditText.getText().toString().trim();
+        String password = mPasswordEditText.getText().toString().trim();
+        if (email.equals("")){
+            mEmailEditText.setError("Please enter your email");
+            return;
+        }
+        if (password.equals("")){
+            mPasswordEditText.setError("Password cannot be blank");
+            return;
+        }
+        mAuthProgressDialog.show();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
+                    }
+                })
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        mAuthProgressDialog.dismiss();
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                        if (!task.isSuccessful()){
+                            Log.w(TAG, "signInWithEmail", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed,", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void createAuthProgressDialog(){
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading....");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
+    }
+
+
+    @Override
+    public void onClick(View view){
+        if (view == mRegisterTextView){
+            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        if (view == mPasswordLoginButton){
+            loginWithPassword();
+        }
+    }
 }
+
