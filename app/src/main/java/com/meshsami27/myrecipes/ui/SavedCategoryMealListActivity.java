@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.meshsami27.myrecipes.models.Meal;
@@ -31,7 +33,16 @@ public class SavedCategoryMealListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mMealCategoryReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORIES);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mMealCategoryReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CATEGORIES);
+                .child(uid);
+
         setUpFirebaseAdapter();
+
     }
 
     private void setUpFirebaseAdapter(){

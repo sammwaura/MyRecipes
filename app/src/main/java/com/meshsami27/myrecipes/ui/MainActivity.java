@@ -3,6 +3,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.meshsami27.myrecipes.R;
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Locale user;
-
+    private meal Mmeal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -139,9 +141,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("category", category);
             startActivity(intent);
         }
-        if (v == mSavedCategoryMealButton) {
-            Intent intent = new Intent(MainActivity.this, SavedCategoryMealListActivity.class);
-            startActivity(intent);
+        if (v == mSavedCategoryMealButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+            DatabaseReference mealRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CATEGORIES)
+                    .child(uid);
+
+            DatabaseReference pushRef = mealRef.push();
+            String pushId =pushRef.getKey();
+            mMeal.setPush(pushId);
+            pushRef.setValue(mMeal);
+
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 
